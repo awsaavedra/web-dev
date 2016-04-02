@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>thenewboston</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id = "content"> </div>
+
+	<script type= "text/jsx">
+
+		//always need render function
+		//just a react class that needs to render
+		var BuckysComponent = React.createClass({
+
+			render: function(){
+				return(
+						<h1> {this.props.user} likes to eat {this.props.food} </h1>
+				);
+			}
+		});
+
+		//2 args: 1 what component you want to display, 
+		//2 where you want to display it
+		React.render(
+				<div> 
+					<BuckysComponent user = "Alex" food = "Bacon"/>
+					<BuckysComponent user = "Tony"  food = "Tuna" />
+					<BuckysComponent user = "John"  food = "Ham" />
+					<BuckysComponent user = "Akul"  food = "Lettuce"/>
+				</div>,
+				document.getElementById("content"));
+
+	</script>
+
+</body>
+</html>
