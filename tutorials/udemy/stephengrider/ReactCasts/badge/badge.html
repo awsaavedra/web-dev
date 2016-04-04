@@ -1,34 +1,41 @@
-<html>
+ <html>
 	<head>
 		<!-- react is what it is used for defining components -->
 		<script src="https://fb.me/react-0.14.8.js"></script>
 		<!-- react is what it is used for rendering component onto dom -->
 		<script src="https://fb.me/react-dom-0.14.8.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	</head>
 
 	<body>
 
-		
+
 
 	</body>
 
 	<script type = "text/jsx">
 
 	//1. define a react component class
-		//return 
-	var HelloWorld = React.createClass({
+		//returns JSX, this is DYNAMIc
+	var Badge = React.createClass({
 
 		render: function(){
-			return <h1> Hello World! </h1>
+			return <button className="btn btn-primary" type="button">
+			  {this.props.title} <span className="badge">{this.props.number}</span>
+			</button>
 		}
 	});
-
+  var options = {
+    title: "sent",
+    number: 12
+  };
 
 	//2. an instance of HelloWorld class, ask react to render HelloWorld class
-	var element = React.createElement(HelloWorld); //element is an instance of HelloWorld
+	var element = React.createElement(Badge, options); //element is an instance of HelloWorld
+    //this options object is not available within Badge class
 
-	//3. When we ask react to render this class, we will tell it 
+	//3. When we ask react to render this class, we will tell it
 	// where to place the rendered element in the dom
 	ReactDOM.render(element, document.body);
 
