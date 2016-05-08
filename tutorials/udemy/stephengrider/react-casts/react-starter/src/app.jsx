@@ -11,12 +11,15 @@ var Hello = React.createClass({
 
   getInitialState: function(){
     return{
-      items: {}
+      items: {},
+      loaded: false
     }
   },
 
   componentWillMount: function() {
+    fb = new Firebase(rootUrl + 'items/');
     this.bindAsObject(new Firebase(rootUrl + 'items/'), 'items');
+    fb.on('value', this.handleDataLoaded);
   },
 
   render: function() {
@@ -26,9 +29,16 @@ var Hello = React.createClass({
           To-Do List
         </h2>
         <Header itemStore = {this.firebaseRefs.items}/>
-        <List items = {this.state.items}/>
+        <hr />
+        <div className = {"content " + (this.state.loaded ? 'loaded': '')}>
+          <List items = {this.state.items}/>
+        </div>
       </div>
     </div>
+  },
+
+  handleDataLoaded: function(){
+    this.setState({loaded: true});
   }
 });
 
